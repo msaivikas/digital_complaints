@@ -19,7 +19,7 @@ class Complaint(models.Model):
     resolved = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.student
+        return self.quick_text
 
     class Meta:
         ordering = ['-reported_date']
