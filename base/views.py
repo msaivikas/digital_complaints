@@ -1,4 +1,3 @@
-import imp
 from django.shortcuts import render
 
 from .models import Complaint, Student
@@ -18,6 +17,6 @@ class ComplaintList(ListView):
 
 class ComplaintAdd(CreateView):
     model = Complaint
-    fields = ['student.student_name', 'group', 'quick_text', 'description',]
+    fields = ['student', 'group', 'quick_text', 'description',]
     success_url = reverse_lazy('complaint_list')
 
