@@ -1,0 +1,32 @@
+{% extends 'base/base_generic.html' %}
+{% block content %}
+ <h2>Digital Complaints Home</h2>
+ <p>Welcome to Digital Complaints. You can report your general hostel related complaints here</p>
+ <h4>Total Complaints : {{num_complaints}}</h4>
+
+ <table>
+    <tr>
+        <th>Reported date</th>
+        <!-- <th>Group</th> -->
+        <th>Quick Text</th>
+        <th>Name</th>
+        <th>Room</th>
+        <th>Mobile</th>
+    </tr>
+    {% for complaint in complaints %}
+    <tr>
+        <td>{{complaint.reported_date}}</td>
+        <!-- <td>{{complaint.group}}</td> -->
+        <td>{{complaint.quick_text}}</td>
+        <td>{{complaint.student.student_name}}</td>
+        <td>{{complaint.student.room}}</td>
+        <td>{{complaint.student.mobile}}</td>
+        <td><a href="">Open</a></td>
+        <td><a href="">Mark as Done</a></td>
+    </tr>
+    {% empty %}
+    <p>No Complaints currently</p>
+    {% endfor %}
+ </table>
+
+ {% endblock content %}
