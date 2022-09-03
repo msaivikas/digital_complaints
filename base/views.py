@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from .models import Complaint, Student
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy
 
@@ -24,3 +24,8 @@ class ComplaintAdd(CreateView):
 class ComplaintDetail(DetailView):
     model = Complaint
     context_object_name = 'detail'
+
+class ComplaintResolved(UpdateView):
+    model = Complaint 
+    fields = ['resolved', 'resolved_date']
+    success_url = reverse_lazy('complaint_list')

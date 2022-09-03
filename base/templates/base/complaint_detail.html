@@ -13,5 +13,8 @@
 <p>Room : <i>{{detail.student.room}}</i></p>
 <p>Hostel : <i>{{detail.student.hostel}}</i></p>
 <p>Mobile Number : <i>{{detail.student.mobile}}</i></p>
+{% if detail.resolved == True %}
+<p>Resolved Date : <i>{{detail.resolved_date}}</i></p>
+{% endif %}
 
 {% endblock content %}

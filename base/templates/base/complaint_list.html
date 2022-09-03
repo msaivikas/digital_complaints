@@ -14,6 +14,7 @@
         <th>Mobile</th>
     </tr>
     {% for complaint in complaints %}
+    {% if complaint.resolved == False %}
     <tr>
         <td>{{complaint.reported_date}}</td>
         <td>{{complaint.quick_text}}</td>
@@ -22,10 +23,37 @@
         <td>{{complaint.student.mobile}}</td>
         <td>{{complaint_detail}}</td>
         <td><a href="{% url 'complaint_detail' complaint.id %}">Open</a></td>
-        <td><a href="">Mark as Done</a></td>
+        <td><a href="{% url 'complaint_resolved' complaint.id %}">Mark as Done</a></td>
     </tr>
+    {% endif %}
     {% empty %}
     <p>No Complaints currently</p>
+    {% endfor %}
+ </table>
+ <h4>Previously resolved complaints</h4>
+ <table>
+    <tr>
+        <th>Resolved date</th>
+        <th>Quick Text</th>
+        <th>Name</th>
+        <th>Room</th>
+        <th>Mobile</th>
+    </tr>
+    {% for complaint in complaints %}
+    {% if complaint.resolved == True %}
+    <tr>
+        <td>{{complaint.resolved_date}}</td>
+        <td>{{complaint.quick_text}}</td>
+        <td>{{complaint.student.student_name}}</td>
+        <td>{{complaint.student.room}}</td>
+        <td>{{complaint.student.mobile}}</td>
+        <td>{{complaint_detail}}</td>
+        <td><a href="{% url 'complaint_detail' complaint.id %}">Open</a></td>
+        <!-- <td><a href="{% url 'complaint_resolved' complaint.id %}">Mark as Done</a></td> -->
+    </tr>
+    {% endif %}
+    {% empty %}
+    <p>No resolved complaints currently</p>
     {% endfor %}
  </table>
 
