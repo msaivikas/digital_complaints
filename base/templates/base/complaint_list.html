@@ -8,7 +8,6 @@
  <table>
     <tr>
         <th>Reported date</th>
-        <!-- <th>Group</th> -->
         <th>Quick Text</th>
         <th>Name</th>
         <th>Room</th>
@@ -17,12 +16,12 @@
     {% for complaint in complaints %}
     <tr>
         <td>{{complaint.reported_date}}</td>
-        <!-- <td>{{complaint.group}}</td> -->
         <td>{{complaint.quick_text}}</td>
         <td>{{complaint.student.student_name}}</td>
         <td>{{complaint.student.room}}</td>
         <td>{{complaint.student.mobile}}</td>
-        <td><a href="">Open</a></td>
+        <td>{{complaint_detail}}</td>
+        <td><a href="{% url 'complaint_detail' complaint.id %}">Open</a></td>
         <td><a href="">Mark as Done</a></td>
     </tr>
     {% empty %}

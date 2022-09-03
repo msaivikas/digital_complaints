@@ -1,0 +1,17 @@
+{% extends 'base/base_generic.html' %}
+{% block content %}
+
+<a href="{% url 'complaint_list' %}">Go back</a>
+<h4>Complaint</h4>
+<p>Quick-note : </p>
+<p><i>{{detail.quick_text}}</i></p>
+<p>Description : </p>
+<p><i>{{detail.description}}</i></p>
+<br>
+<h4>Student</h4>
+<p>Name : <i>{{detail.student.student_name}}</i></p>
+<p>Room : <i>{{detail.student.room}}</i></p>
+<p>Hostel : <i>{{detail.student.hostel}}</i></p>
+<p>Mobile Number : <i>{{detail.student.mobile}}</i></p>
+
+{% endblock content %}
